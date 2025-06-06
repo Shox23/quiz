@@ -1,29 +1,31 @@
 import { useCategoriesStore } from "@/store/categoriesStore";
 import { useQuizStore } from "@/store/quizStore";
-import { Categoryitem } from "@/utils/types/CategoryItem";
 import { Spin } from "antd";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import QuizWidget from "./components/QuizWidget";
-import QuizForm from "./components/QuizForm";
+import { useMemo } from "react";
+import QuizWidget from "./widgets/QuizWidget";
+import QuizForm from "./widgets/QuizForm";
 
 export default function CategoryPage() {
   const router = useRouter();
-  const [category, setCategory] = useState<Categoryitem | null>(null);
   const getCategory = useCategoriesStore((state) => state.getCategory);
   const categories = useCategoriesStore((state) => state.categories);
   const isLoading = useCategoriesStore((state) => state.isLoading);
   const currentQuiz = useQuizStore((state) => state.quiz);
 
-  useEffect(() => {
-    if (router.isReady && router.query.id) {
-      const id = Number(router.query.id);
-      if (!isNaN(id)) {
-        const currentCategory = getCategory(id);
-        if (currentCategory) setCategory(currentCategory);
-      }
-    }
-  }, [router.query.id, router.isReady, categories]);
+  const categoryId = useMemo(() => {
+    if (!router.isReady || !router.query.id) return null;
+    const id = Array.isArray(router.query.id)
+      ? router.query.id[0]
+      : router.query.id;
+    const numericId = Number(id);
+    return isNaN(numericId) ? null : numericId;
+  }, [router.isReady, router.query.id]);
+
+  const category = useMemo(() => {
+    if (!categoryId) return null;
+    return getCategory(categoryId);
+  }, [categoryId, getCategory, categories]);
 
   if (!router.isReady || isLoading) {
     return <Spin />;

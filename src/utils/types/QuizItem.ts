@@ -9,3 +9,9 @@ export interface QuizItem {
 
 export type QuizType = "boolean" | "multiple";
 export type QuizDifficulty = "easy" | "medium" | "hard";
+
+export interface QuizConfig {
+  type: QuizType;
+  count: number;
+  difficulty: QuizDifficulty;
+}
