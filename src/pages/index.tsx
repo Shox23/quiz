@@ -11,7 +11,7 @@ export default function Home() {
 
   useEffect(() => {
     resetQuiz();
-  }, []);
+  });
   return (
     <>
       <div className="container">

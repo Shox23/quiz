@@ -9,7 +9,6 @@ import QuizForm from "./widgets/QuizForm";
 export default function CategoryPage() {
   const router = useRouter();
   const getCategory = useCategoriesStore((state) => state.getCategory);
-  const categories = useCategoriesStore((state) => state.categories);
   const isLoading = useCategoriesStore((state) => state.isLoading);
   const currentQuiz = useQuizStore((state) => state.quiz);
 
@@ -25,7 +24,7 @@ export default function CategoryPage() {
   const category = useMemo(() => {
     if (!categoryId) return null;
     return getCategory(categoryId);
-  }, [categoryId, getCategory, categories]);
+  }, [categoryId, getCategory]);
 
   if (!router.isReady || isLoading) {
     return <Spin />;

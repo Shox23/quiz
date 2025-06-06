@@ -1,10 +1,10 @@
 import { fetchQuiz } from "@/utils/api/requests/quiz";
-import { QuizDifficulty, QuizType } from "@/utils/types/QuizItem";
+import { QuizDifficulty, QuizItem, QuizType } from "@/utils/types/QuizItem";
 import { QuizStore } from "@/utils/types/QuizStore";
 import { decode } from "he";
 import { create } from "zustand";
 
-export const useQuizStore = create<QuizStore>((set, get) => ({
+export const useQuizStore = create<QuizStore>((set) => ({
   quiz: [],
   isLoading: false,
   currentQuestion: null,
@@ -21,7 +21,7 @@ export const useQuizStore = create<QuizStore>((set, get) => ({
       const response = await fetchQuiz(id, type, difficulty, amount);
       if (response.status == 200) {
         const processedQuestions = response.data.results.map(
-          (question: any) => ({
+          (question: QuizItem) => ({
             ...question,
             question: decode(question.question),
             correct_answer: decode(question.correct_answer),
