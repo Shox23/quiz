@@ -23,7 +23,6 @@ export const useCategoriesStore = create<CategoriesStore>((set, get) => ({
 
   getCategory: (id: number): Categoryitem | undefined => {
     const categories = get().categories;
-    console.log(categories);
     return categories.find((item) => item.id == id);
   },
 }));

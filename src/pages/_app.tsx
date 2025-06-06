@@ -1,6 +1,8 @@
 import { useCategoriesStore } from "@/store/categoriesStore";
 import "@/styles/globals.css";
+import { Header } from "antd/es/layout/layout";
 import type { AppProps } from "next/app";
+import Link from "next/link";
 import { useEffect } from "react";
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -13,5 +15,12 @@ export default function App({ Component, pageProps }: AppProps) {
       fetchCategories();
     }
   }, [categories, fetchCategories]);
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <Header className="header">
+        <Link href="/">Go to categories</Link>
+      </Header>
+      <Component {...pageProps} />;
+    </>
+  );
 }
