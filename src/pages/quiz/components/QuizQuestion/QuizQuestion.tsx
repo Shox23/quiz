@@ -1,10 +1,11 @@
 import { FC, memo } from "react";
-import { QuizQuestionProps } from "./types";
+import { QuizQuestionProps } from "../../../../utils/types/QuizQuestionProps";
 
-export const QuizQuestion = memo(({ question }) => (
+const QuizQuestion = memo(({ question }) => (
   <div>
     <h3 className="quiz-widget__title">{question}</h3>
   </div>
 )) as FC<QuizQuestionProps>;
 
 QuizQuestion.displayName = "QuizQuestion";
+export default QuizQuestion;

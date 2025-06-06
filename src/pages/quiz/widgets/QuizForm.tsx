@@ -3,10 +3,10 @@ import { QuizFormProps } from "@/utils/types/QuizForm";
 import { QuizDifficulty, QuizType } from "@/utils/types/QuizItem";
 import { Button } from "antd";
 import { FormEvent } from "react";
-import { QuizRadioGroup } from "../components/QuizRadioGroup/QuizRadioGroup";
-import { FormField } from "../components/QuizFormField/QuizFormField";
+import QuizRadioGroup from "../components/QuizRadioGroup/QuizRadioGroup";
+import FormField from "../components/QuizFormField/QuizFormField";
 import { QUIZ_OPTIONS } from "@/utils/constants/quisOptions";
-import { QuizCountInput } from "../components/QuizInput/QuizInput";
+import QuizCountInput from "../components/QuizInput/QuizInput";
 
 export default function QuizForm({ id }: QuizFormProps) {
   const { config, updateConfig, submitQuiz, loading } = useQuizForm(id);

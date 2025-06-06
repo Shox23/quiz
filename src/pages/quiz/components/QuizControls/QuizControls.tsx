@@ -1,8 +1,8 @@
 import { Button } from "antd";
 import { memo } from "react";
-import { QuizControlsProps } from "./types";
+import { QuizControlsProps } from "../../../../utils/types/QuizControlsProps";
 
-export const QuizControls = memo<QuizControlsProps>(
+const QuizControls = memo<QuizControlsProps>(
   ({ onSubmit, canSubmit }) => (
     <div className="quiz-widget__buttons">
       <Button onClick={onSubmit} type="primary" disabled={!canSubmit}>
@@ -13,3 +13,4 @@ export const QuizControls = memo<QuizControlsProps>(
 );
 
 QuizControls.displayName = "QuizControls";
+export default QuizControls;

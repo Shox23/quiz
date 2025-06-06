@@ -1,8 +1,8 @@
 import { FC, memo } from "react";
-import { QuizInputProps } from "./types";
+import { QuizInputProps } from "../../../../utils/types/QuizInputProps";
 import { InputNumber } from "antd";
 
-export const QuizCountInput: FC<QuizInputProps> = memo(
+const QuizInput: FC<QuizInputProps> = memo(
   ({ value, onChange }) => {
     const handleChange = (val: number | null) => {
       const count = val ?? 10;
@@ -22,4 +22,5 @@ export const QuizCountInput: FC<QuizInputProps> = memo(
   }
 );
 
-QuizCountInput.displayName = "QuizCountInput";
+QuizInput.displayName = "QuizInput";
+export default QuizInput

@@ -1,8 +1,8 @@
 import { Progress } from "antd";
 import { memo } from "react";
-import { QuizProgressProps } from "./types";
+import { QuizProgressProps } from "../../../../utils/types/QuizProgressProps";
 
-export const QuizProgress = memo<QuizProgressProps>(
+const QuizProgress = memo<QuizProgressProps>(
   ({ percent, current, total }) => (
     <Progress
       percent={percent}
@@ -13,3 +13,4 @@ export const QuizProgress = memo<QuizProgressProps>(
 );
 
 QuizProgress.displayName = "QuizProgress";
+export default QuizProgress

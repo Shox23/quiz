@@ -1,10 +1,10 @@
 import { FC, memo } from "react";
-import { FormFieldProps } from "./types";
+import { FormFieldProps } from "../../../../utils/types/QuizFormFieldProps";
 import { Typography } from "antd";
 
-export const FormField: FC<FormFieldProps> = memo(
+const FormField: FC<FormFieldProps> = memo(
   ({ title, children, id }) => (
-    <div className="form-field" id={id.toString()}>
+    <div className="form-field" id={id}>
       <Typography.Title level={4} className="form-field__title">
         {title}
       </Typography.Title>
@@ -14,3 +14,4 @@ export const FormField: FC<FormFieldProps> = memo(
 );
 
 FormField.displayName = "FormField";
+export default FormField;

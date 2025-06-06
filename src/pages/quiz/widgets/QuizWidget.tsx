@@ -3,11 +3,11 @@ import { useQuizStore } from "@/store/quizStore";
 import { useResultsStore } from "@/store/resultsStore";
 import { useQuizLogic } from "@/hooks/useQuizLogic";
 import { useQuizInit } from "@/hooks/useQuizInit";
-import { QuizError } from "../components/QuizError/QuizError";
-import { QuizProgress } from "../components/QuizProgress/QuizProgress";
-import { QuizQuestion } from "../components/QuizQuestion/QuizQuestion";
-import { QuizAnswers } from "../components/QuizAnswers/QuizAnswers";
-import { QuizControls } from "../components/QuizControls/QuizControls";
+import QuizError from "../components/QuizError/QuizError";
+import QuizProgress from "../components/QuizProgress/QuizProgress";
+import QuizQuestion from "../components/QuizQuestion/QuizQuestion";
+import QuizAnswers from "../components/QuizAnswers/QuizAnswers";
+import QuizControls from "../components/QuizControls/QuizControls";
 import { SavedAnswer } from "@/utils/types/ResultsStore";
 
 export default function QuizWidget() {
