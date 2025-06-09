@@ -18,7 +18,10 @@ export default function Home() {
         <h2 className="page-title">Choose category</h2>
         <div className="list">
           {isLoading ? (
-            <Spin />
+            <div className="loader-container">
+              <Spin />
+              <p className="loader-text">Loading categories</p>
+            </div>
           ) : (
             categories.map((item) => (
               <Card key={item.id}>

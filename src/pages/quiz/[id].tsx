@@ -5,10 +5,12 @@ import { useRouter } from "next/router";
 import { useMemo } from "react";
 import QuizWidget from "./widgets/QuizWidget";
 import QuizForm from "./widgets/QuizForm";
+import QuizError from "./components/QuizError/QuizError";
 
 export default function CategoryPage() {
   const router = useRouter();
   const getCategory = useCategoriesStore((state) => state.getCategory);
+  const categories = useCategoriesStore((state) => state.categories);
   const isLoading = useCategoriesStore((state) => state.isLoading);
   const currentQuiz = useQuizStore((state) => state.quiz);
 
@@ -22,16 +24,34 @@ export default function CategoryPage() {
   }, [router.isReady, router.query.id]);
 
   const category = useMemo(() => {
-    if (!categoryId) return null;
+    if (!categoryId || !categories.length) return null;
     return getCategory(categoryId);
-  }, [categoryId, getCategory]);
+  }, [categoryId, getCategory, categories]);
 
   if (!router.isReady || isLoading) {
-    return <Spin />;
+    return (
+      <div className="container loader-container">
+        <Spin size="large" />
+        <p className="loader-text">Loading category...</p>
+      </div>
+    );
+  }
+
+  if (router.isReady && !categoryId) {
+    return <QuizError text="Invalid category ID" />;
+  }
+
+  if (categoryId && !category) {
+    return <QuizError text="Category not found" />;
   }
 
   if (!category) {
-    return <p>Категория не найдена</p>;
+    return (
+      <div className="container loader-container">
+        <Spin size="large" />
+        <p className="loader-text">Loading category data...</p>
+      </div>
+    );
   }
 
   return (

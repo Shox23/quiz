@@ -51,7 +51,7 @@ export default function QuizWidget() {
   });
 
   if (currentQuestion === null) {
-    return <QuizError />;
+    return <QuizError text="Question not found" />
   }
 
   return (

@@ -1,9 +1,9 @@
-import { memo } from "react";
+import { QuizErrorProps } from "@/utils/types/QuizErrorProps";
+import { Result } from "antd";
+import { FC, memo } from "react";
 
-const QuizError = memo(() => (
-  <div className="quiz-widget__error">
-    <h2>Question not found</h2>
-  </div>
+const QuizError: FC<QuizErrorProps> = memo(({ text, title }) => (
+  <Result status="error" title={title} subTitle={text}></Result>
 ));
 
 QuizError.displayName = "QuizError";

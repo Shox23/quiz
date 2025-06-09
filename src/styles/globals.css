@@ -34,6 +34,15 @@ li {
   padding: 16px;
 }
 
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  gap: 16px;
+}
+
 .list {
   display: grid;
   gap: 12px;
@@ -70,6 +79,10 @@ li {
 
 .page-title {
   margin-bottom: 16px;
+
+  @media (max-width: 640px) {
+    font-size: 18px;
+  }
 }
 
 .answers {
@@ -102,10 +115,11 @@ li {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  margin-top: 16px;
 }
 
 .quiz-widget__title {
-  font-weight: 500;
+  font-weight: 600;
   font-size: 18px;
 
   @media (max-width: 640px) {

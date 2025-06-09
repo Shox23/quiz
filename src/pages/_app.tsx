@@ -11,8 +11,9 @@ export default function App({ Component, pageProps }: AppProps) {
     (state) => state.fetchCategoriesAction
   );
   const categories = useCategoriesStore((state) => state.categories);
+  const loading = useCategoriesStore((state) => state.isLoading);
   useEffect(() => {
-    if (!categories.length) {
+    if (!categories.length && !loading) {
       fetchCategories();
     }
   }, [categories, fetchCategories]);
